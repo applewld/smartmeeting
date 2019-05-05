@@ -1,0 +1,76 @@
+# Tomcat
+server:
+  tomcat:
+    #编码格式
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+    max-connections: 5000
+  connection-timeout:
+  servlet:
+    context-path: /
+
+spring:
+  profiles:
+    #指定读取配置文件:dev(开发环境),prod(生产环境),test(测试环境)
+    active: dev # 表示所用配置文件为application-dev.yml
+    # 连接池中的最小空闲连接
+  thymeleaf:
+    cache: false
+
+#mybatis
+mybatis-plus:
+  mapper-locations: /com/hznu/smartmeeting/mapper/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.hznu.smartmeeting.entity
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+    #key-generator: com.baomidou.springboot.xxx
+    #逻辑删除配置
+    logic-delete-value: -1
+    logic-not-delete-value: 0
+      #自定义填充策略接口实现
+      #meta-object-handler: com.baomidou.springboot.xxx
+    #自定义SQL注入器
+    #sql-injector: com.baomidou.mybatisplus.dao.LogicSqlInjector
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+
+config:  # 自定义参数
+  #签名服务器相关配置
+  sign:
+    #读取配置方式 1:"通过yml文件读取" 2:"从sysConfig表中读取"
+    option: 2
+  #密码相关设置
+  password:
+    #密码算法名称
+    algorithmName: "md5"
+    #hash遍历次数
+    hashIterations: 2
+
+password:
+  algorithmName: md5
+  hashIterations: 2
+
+  spring.jackson.date-format: yyyy-MM-dd HH:mm:ss
+  spring.jackson.time-zone: GMT+8
+
+# 日志路径
+#logging:
+#  # ${LOG_PATH} 文件路径
+#  path: /www/logs/coursemanagerbackend/
+#  # ${LOG_FILE} 文件名称
+#  file: coursemanagerbackend-${spring.profiles.active}
+
