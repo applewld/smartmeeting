@@ -74,7 +74,10 @@ public class Meeting implements Serializable {
      * 会议类型
      */
     private Integer meetingType;
-
+    /**
+     * 会议内容
+     */
+    private String meetingContent;
 
     public Integer getId() {
         return id;
@@ -188,6 +191,13 @@ public class Meeting implements Serializable {
         this.meetingType = meetingType;
     }
 
+    public String getMeetingContent() {
+        return meetingContent;
+    }
+
+    public void setMeetingContent(String meetingContent) {
+        this.meetingContent = meetingContent;
+    }
     @Override
     public String toString() {
         return "Meeting{" +
@@ -205,6 +215,7 @@ public class Meeting implements Serializable {
         ", departmentType=" + departmentType +
         ", documents=" + documents +
         ", meetingType=" + meetingType +
+                ", meetingContent=" + meetingContent +
         "}";
     }
 }

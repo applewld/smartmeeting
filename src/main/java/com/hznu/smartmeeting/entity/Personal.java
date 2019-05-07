@@ -61,7 +61,10 @@ public class Personal implements Serializable {
      * 所属企业
      */
     private Integer administratorId;
-
+    /**
+     * 头像路径
+     */
+    private String avatar;
 
     public Integer getId() {
         return id;
@@ -151,6 +154,13 @@ public class Personal implements Serializable {
         this.administratorId = administratorId;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
     @Override
     public String toString() {
         return "Personal{" +
@@ -165,6 +175,7 @@ public class Personal implements Serializable {
         ", accountNumber=" + accountNumber +
         ", password=" + password +
         ", administratorId=" + administratorId +
+                ", avatar=" + avatar +
         "}";
     }
 }

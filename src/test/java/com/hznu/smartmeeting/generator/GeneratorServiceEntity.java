@@ -31,7 +31,7 @@ public class GeneratorServiceEntity {
 //                "sys_config", "role_resource", "sys_log", "flow_template_detail",
 //                "role", "user_role", "role_resource", "resource");
 
-        generateByTables(serviceNameStartWithI, packageName, "administrator","department_member","dictionaries","group_member","meeting","meeting_people","meeting_room","meeting_room_device","personal","repair_record");
+        generateByTables(serviceNameStartWithI, packageName, "message_record");
     }
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
