@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -39,6 +41,34 @@ public class MeetingRoomController {
             }
             else{
                 return R.ok().put("data",meetingRoomList);
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return R.error();
+        }
+    }
+
+    @ApiOperation("获取会议室列表根据条件")
+    @PostMapping("/getMeetingRoomByCondition")
+    public R getMeetingRoomByCondition(@RequestBody MeetingRoom meetingRoom){
+        try
+        {
+            List<MeetingRoom> meetingRoomList=meetingRoomService.selectList(new EntityWrapper<MeetingRoom>());
+            ArrayList<MeetingRoom> meetingRoomData = new ArrayList<>();
+
+            for(int i=0;i<meetingRoomList.size();i++){
+                    if(meetingRoomList.get(i).getRoomType()==meetingRoom.getRoomType()&&
+                            meetingRoomList.get(i).getCapacity()>=meetingRoom.getCapacity()){
+                        meetingRoomData.add(meetingRoomList.get(i));
+                    }
+            }
+
+            if(meetingRoomData.size()==0){
+                return R.error(2,"无满足条件会议室");
+            }
+            else{
+                return R.ok().put("data",meetingRoomData);
             }
         }catch (Exception e)
         {
