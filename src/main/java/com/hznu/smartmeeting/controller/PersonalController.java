@@ -2,6 +2,7 @@ package com.hznu.smartmeeting.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.hznu.smartmeeting.entity.Meeting;
 import com.hznu.smartmeeting.entity.Personal;
 import com.hznu.smartmeeting.mybeans.R;
@@ -27,6 +28,25 @@ import java.util.List;
 public class PersonalController {
     @Autowired
     PersonalService personalService;
+
+    @ApiOperation("获取人员列表")
+    @GetMapping("/getPersonalList")
+    public R getPersonalList(){
+        try
+        {
+            List<Personal> personalList=personalService.selectList(new EntityWrapper<Personal>());
+            if(personalList==null){
+                return R.error(2,"无人员信息");
+            }
+            else{
+                return R.ok().put("data",personalList);
+            }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return R.error();
+        }
+    }
 
     @ApiOperation("预约端账户登录")
     @PostMapping("/loginByAccount")
