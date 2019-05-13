@@ -58,8 +58,7 @@ public class MeetingRoomController {
             ArrayList<MeetingRoom> meetingRoomData = new ArrayList<>();
 
             for(int i=0;i<meetingRoomList.size();i++){
-                    if(meetingRoomList.get(i).getRoomType()==meetingRoom.getRoomType()&&
-                            meetingRoomList.get(i).getCapacity()>=meetingRoom.getCapacity()){
+                    if(meetingRoomList.get(i).getCapacity()>=meetingRoom.getCapacity()){
                         meetingRoomData.add(meetingRoomList.get(i));
                     }
             }
